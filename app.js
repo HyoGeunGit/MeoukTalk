@@ -14,10 +14,11 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
 require('./mongo');
+let passport = require('./passport')(Users);
 
 
 app.get('/',(req,res)=>{ res.render('main.html') })
-require('./routes/auth')(app, Users);
+require('./routes/auth')(app, Users, passport);
 
 
 

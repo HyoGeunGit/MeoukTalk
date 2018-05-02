@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "vue-cli": "^2.9.3"
   }
 }
