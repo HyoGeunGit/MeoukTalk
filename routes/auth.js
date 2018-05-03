@@ -14,11 +14,14 @@ function auth(app, Users, passport, rndstring){
   .post('/signup', async (req,res)=>{
     var user = new Users(req.body);
     user.token = rndstring.generate(15);
-    var result = await user.save();
-    if(result)
-      return res.status(200).json({message : "Signup Success!"});
-    else
-      return res.status(500).json({message : "Signup Fail!"});
+    try {
+      var result = await user.save();
+    }catch(e){
+      if(e instanceof user_duplicate) return res.status(409).json({message:"already exist"});
+      if(e instanceof ValidationError) return res.status(400).json({message: e.message});
+      if(e instanceof paramsError) return res.status(400).json({message: e.message});
+    }
+    res.status(200).json(user);
   })
   .post('/aa', async (req,res)=>{
     var result = await Users.find();

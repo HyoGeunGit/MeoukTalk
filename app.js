@@ -13,6 +13,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
+require('./func');
 require('./mongo');
 let passport = require('./passport')(Users);
 

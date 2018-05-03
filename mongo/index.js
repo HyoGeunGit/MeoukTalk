@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/MeoukTalkDB');
+mongoose.connect('mongodb://localhost/MeoukTalkDB1');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -19,6 +19,9 @@ var UsersSchema = mongoose.Schema({
   token : {type : String}
 });
 Users = mongoose.model('users', UsersSchema);
+
+
+require('./err')(UsersSchema);
 
 
 exports.Users = Users;
