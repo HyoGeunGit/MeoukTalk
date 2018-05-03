@@ -15,7 +15,8 @@ var UsersSchema = mongoose.Schema({
   passwd : {type : String , required : true},
   name : {type : String, required : true},
   email : {type : String, default : 0},
-  phone : {type : String}
+  phone : {type : String},
+  token : {type : String}
 });
 Users = mongoose.model('users', UsersSchema);
 

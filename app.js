@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-
+const rndstring = require('randomstring');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -18,7 +18,7 @@ let passport = require('./passport')(Users);
 
 
 app.get('/',(req,res)=>{ res.render('main.html') })
-require('./routes/auth')(app, Users, passport);
+require('./routes/auth')(app, Users, passport, rndstring);
 
 
 
