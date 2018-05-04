@@ -7,14 +7,14 @@
 
 > Params
 
-  ex)
-  {
-    id : "akat32",
-    passwd : "passwd",
-    name : "NaJaeM",
-    email : "email@akat32.com",
-    phone : "01012312300"
-  }
+    ex)
+    {
+      id : "akat32",
+      passwd : "passwd",
+      name : "NaJaeM",
+      email : "email@akat32.com",
+      phone : "01012312300"
+    }
 
 > Response
 
@@ -28,21 +28,21 @@
 
 > Params
 
-  ex)
-  {
-    id : "akat32",
-    passwd : "passwd"
-  }
+    ex)
+    {
+      id : "akat32",
+      passwd : "passwd"
+    }
 > Response
 
-  ex)
-  {
-    "user": {
-      "token": "u9mj99NzjPD9JXN",
-      "id": "akat321111",
-      "passwd": "akat32!",
-      "name": "akaaaa111",
-      "email": "aaaa@aaaa.com",
-      "phone" : "01000000000"
+    ex)
+    {
+      "user": {
+        "token": "u9mj99NzjPD9JXN",
+        "id": "akat321111",
+        "passwd": "akat32!",
+        "name": "akaaaa111",
+        "email": "aaaa@aaaa.com",
+        "phone" : "01000000000"
+      }
     }
-  }
