@@ -35,7 +35,8 @@
     }
 > Response
 
-    ex)
+    ex) success
+
     {
       "user": {
         "token": "u9mj99NzjPD9JXN",
@@ -46,3 +47,7 @@
         "phone" : "01000000000"
       }
     }
+
+    ex) fail
+
+      Unauthorized
