@@ -16,8 +16,11 @@ function auth(app, Users, passport, rndstring){
     user.token = rndstring.generate(15);
     try {
       var result = await user.save();
-    }catch(e){
-      if(e instanceof user_duplicate) return res.status(409).json({message:"already exist"});
+    }catch(e){  // e instanceof user_duplicate ||
+      if(e instanceof user_duplicate){
+        console.log('ERR!');
+        return res.status(409).json({message:"already exist"});
+      }
       if(e instanceof ValidationError) return res.status(400).json({message: e.message});
       if(e instanceof paramsError) return res.status(400).json({message: e.message});
     }
