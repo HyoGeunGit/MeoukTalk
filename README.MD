@@ -24,7 +24,7 @@
 
     HTTP 400 : {message : e.message} (에러 메시지가 string 으로 반환)
 
-* POST /auth/solo : Make New solo
+* POST /signin : User Signin (유저 로그인)
 
 > Params
 
@@ -35,8 +35,8 @@
     }
 > Response
 
-    ex) success
-
+    HTTP 200 : 성공!
+    ex)
     {
       "user": {
         "token": "u9mj99NzjPD9JXN",
@@ -48,6 +48,4 @@
       }
     }
 
-    ex) fail
-
-      Unauthorized
+    HTTP 404 : {message : "User Not Fiound!"}

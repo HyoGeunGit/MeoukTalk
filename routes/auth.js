@@ -8,7 +8,10 @@ function auth(app, Users, passport, rndstring){
   app.get('/auth',(req,res)=>{
     res.send('auth test');
   })
-  .post('/signin',passport.authenticate('local') , (req,res)=>{
+  .get('/err', (req,res)=>{
+    res.status(404).json({message : "User Not Fiound!"});
+  })
+  .post('/signin',passport.authenticate('local', {failureRedirect: '/err'}), (req,res)=>{
     res.status(200).json({user : req.session.passport.user});
     //res.redirect('/');
   })
