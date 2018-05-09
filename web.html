@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MeoukTalk</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+      function PushButton(){
+        axios({
+          method : 'post',
+          url : "http://localhost:3000/signin",
+          data:{id : "akat32", passwd : "akat32!"}
+        })
+        .then(function(response){
+          console.log(response.data);
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <button id="button" onclick="PushButton();">전송</button></input>
+    </div>
+  </body>
+</html>

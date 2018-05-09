@@ -8,11 +8,8 @@ function auth(app, Users, passport, rndstring){
   app.get('/auth',(req,res)=>{
     res.send('auth test');
   })
-  .get('/err', (req,res)=>{
-    res.status(404).json({message : "User Not Fiound!"});
-  })
-  .post('/signin',passport.authenticate('local', {failureRedirect: '/err'}), (req,res)=>{
-    res.status(200).json({user : req.session.passport.user});
+  .post('/signin',passport.authenticate('local'), (req,res)=>{
+    res.status(200).json({user});
     //res.redirect('/');
   })
   .post('/signup', async (req,res)=>{
@@ -20,11 +17,8 @@ function auth(app, Users, passport, rndstring){
     user.token = rndstring.generate(15);
     try {
       var result = await user.save();
-    }catch(e){  // e instanceof user_duplicate ||
-      if(e instanceof user_duplicate){
-        console.log('ERR!');
-        return res.status(409).json({message:"already exist"});
-      }
+    }catch(e){
+      if(e instanceof user_duplicate) return res.status(409).json({message:"already exist"});
       if(e instanceof ValidationError) return res.status(400).json({message: e.message});
       if(e instanceof paramsError) return res.status(400).json({message: e.message});
     }
