@@ -23,7 +23,6 @@ require('./func');
 require('./mongo');
 let passport = require('./passport')(Users);
 
-
 app.get('/',(req,res)=>{ res.render('main.html') })
 require('./routes/auth')(app, Users, passport, rndstring);
 

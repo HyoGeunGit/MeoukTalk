@@ -9,7 +9,7 @@ function auth(app, Users, passport, rndstring){
     res.send('auth test');
   })
   .post('/signin',passport.authenticate('local'), (req,res)=>{
-    res.status(200).json({user});
+    res.status(200).json({message : "User signin success!"});
     //res.redirect('/');
   })
   .post('/signup', async (req,res)=>{
