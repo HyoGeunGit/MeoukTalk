@@ -16,15 +16,9 @@ module.exports = (Users) =>{
       session: true, // 세션에 저장 여부
       passReqToCallback: false,
     }, async function(id, passwd, done){
-      var user
-      try{
-        user = await Users.findOne({id: id, passwd: passwd}, {__v: 0, _id:0});
-      }
-      catch(e){
-        console.log('ERR!');
-        return done(null,false, {message: "아이디나 비밀번호가 틀렸습니다"})
-      }
-      return done(null, user)
+      var user = await Users.findOne({id: id, passwd: passwd}, {__v: 0, _id:0});
+      if(!user) done(false,null,{message:"아이디나 비밀번호가 틀렸습니다."});
+      else return done(null, user);
     }));
 
   return passport;
