@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const rndstring = require('randomstring');
+const ejs = require('ejs')
 var cookieSession = require('cookie-session');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,6 +26,7 @@ let passport = require('./passport')(Users);
 
 app.get('/',(req,res)=>{ res.render('main.html') })
 require('./routes/auth')(app, Users, passport, rndstring);
+require('./routes/loginGet')(app);
 
 
 

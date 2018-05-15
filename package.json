@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "cookie-session": "^2.0.0-beta.3",
-    "ejs": "^2.5.9",
+    "ejs": "^2.6.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "randomstring": "^1.1.5",

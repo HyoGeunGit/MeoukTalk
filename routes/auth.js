@@ -10,7 +10,9 @@ function auth(app, Users, passport, rndstring){
   })
   .post('/signin',passport.authenticate('local'), (req,res)=>{
     res.status(200).json({message : "User signin success!"});
-    //res.redirect('/');
+  })
+  .post('/signinWeb',passport.authenticate('local', {failureRedirect: '/login'} ), (req,res)=>{
+    res.redirect('/');
   })
   .post('/signup', async (req,res)=>{
     var user = new Users(req.body);

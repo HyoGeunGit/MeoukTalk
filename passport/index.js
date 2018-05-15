@@ -17,7 +17,7 @@ module.exports = (Users) =>{
       passReqToCallback: false,
     }, async function(id, passwd, done){
       var user = await Users.findOne({id: id, passwd: passwd}, {__v: 0, _id:0});
-      if(!user) done(false,null,{message:"아이디나 비밀번호가 틀렸습니다."});
+      if(!user) done(null,false,{message:"아이디나 비밀번호가 틀렸습니다."});
       else return done(null, user);
     }));
 
