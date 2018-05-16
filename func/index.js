@@ -16,9 +16,9 @@ function isAuth (req, res, next) {
   if (req.isAuthenticated())  return next();
   return res.status(401).json({message: "unauthed"});
 }
-
-
 global.isAuth = isAuth;
+
+
 global.user_duplicate = user_duplicate;
 global.ValidationError = ValidationError;
 global.paramsError = paramsError;

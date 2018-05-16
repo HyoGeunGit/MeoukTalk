@@ -26,6 +26,18 @@ function auth(app, Users, passport, rndstring){
     }
     res.status(200).json(user);
   })
+  .post('/signupWeb', async (req,res)=>{
+    var user = new Users(req.body);
+    user.token = rndstring.generate(15);
+    try {
+      var result = await user.save();
+    }catch(e){
+      if(e instanceof user_duplicate) return res.status(409).json({message:"already exist"});
+      if(e instanceof ValidationError) return res.status(400).json({message: e.message});
+      if(e instanceof paramsError) return res.status(400).json({message: e.message});
+    }
+    res.redirect('/');
+  })
   .post('/aa', async (req,res)=>{
     var result = await Users.find();
     res.send(result);
