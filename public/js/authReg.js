@@ -1,7 +1,7 @@
 async function Signup_btn(){
   var result = await axios({
     method : 'post',
-    url : "http://localhost:3000/signupWeb",
+    url : "http://iwin247.info:3000/signupWeb",
     data:{id : $('.regId').val(),
           passwd : $('.regPasswd').val(),
           name : $('.regName').val(),
