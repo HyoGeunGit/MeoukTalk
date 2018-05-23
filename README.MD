@@ -35,17 +35,6 @@
     }
 > Response
 
-    HTTP 200 : 성공!
-    ex)
-    {
-      "user": {
-        "token": "u9mj99NzjPD9JXN",
-        "id": "akat321111",
-        "passwd": "akat32!",
-        "name": "akaaaa111",
-        "email": "aaaa@aaaa.com",
-        "phone" : "01000000000"
-      }
-    }
+    HTTP 200 : {message : "Signin Success!"}
 
     HTTP 404 : {message : "User Not Fiound!"}

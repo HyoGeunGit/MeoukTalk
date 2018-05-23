@@ -10,8 +10,8 @@ function auth(app, Users, passport, rndstring){
   })
   .post('/signin',(req,res,next)=>{
     passport.authenticate('local', (err,user,info)=>{
-      if(err) { return res.status(404).json({message : err.message})}
-      if (!user) { return res.status(404).json({message : err.message})}
+      if(err) { return res.status(401).json({message : err.message})}
+      if (!user) { return res.status(401).json({message : err.message})}
       return res.status(200).json({message:"Signin Success!"});
     })(req, res, next)
   })
@@ -20,6 +20,7 @@ function auth(app, Users, passport, rndstring){
   })
   .post('/signup', async (req,res)=>{
     var user = new Users(req.body);
+
     user.token = rndstring.generate(15);
     try {
       var result = await user.save();
