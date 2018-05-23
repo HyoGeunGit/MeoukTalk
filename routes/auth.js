@@ -8,12 +8,17 @@ function auth(app, Users, passport, rndstring){
   app.get('/auth',(req,res)=>{
     res.send('auth test');
   })
-  .post('/signin',(req,res,next)=>{
-    passport.authenticate('local', (err,user,info)=>{
-      if(err) { return res.status(401).json({message : err.message})}
-      if (!user) { return res.status(401).json({message : err.message})}
-      return res.status(200).json({message:"Signin Success!"});
-    })(req, res, next)
+  // .post('/signin',(req,res,next)=>{
+  //   passport.authenticate('local', (err,user,info)=>{
+  //     if(err) { return res.status(401).json({message : err.message})}
+  //     if (!user) { return res.status(401).json({message : err.message})}
+  //     return res.status(200).json({message:"Signin Success!"});
+  //   })(req, res, next)
+  // })
+  .post('/signin', async(req,res)=>{
+    var result = await Users.findOne({"id":req.body.id,"passwd":req.body.passwd});
+    if(!result)return res.status(404).json({message : "User Not Found!"})
+    return res.status(200).json({message : "Signin Success!"})
   })
   .post('/signinWeb',passport.authenticate('local', {failureRedirect: '/login'} ), (req,res)=>{
     res.redirect('/');

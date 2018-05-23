@@ -37,4 +37,4 @@
 
     HTTP 200 : {message : "Signin Success!"}
 
-    HTTP 404 : {message : "User Not Fiound!"}
+    HTTP 404 : {message : "User Not Found!"}
