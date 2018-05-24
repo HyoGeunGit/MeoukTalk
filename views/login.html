@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
@@ -10,27 +11,21 @@
   </head>
   <body>
 
-    <div style="margin-bottom:15%">
+    <div>
       <div id = "Box1"></div>
       <div id = "Wel"></div>
       <div id = "Box2"></div>
     </div>
 
-    <div style="padding:15px;margin-bottom:20px;">
+    <div>
       <div class = "sub">
         <input type="text" placeholder="User name" class = "loginName"/>
-      </div>
-      <div class = "sub">
         <input type="password" placeholder="Password" class = "loginPasswd"/>
       </div>
-    </div>
-    <div style="margin-top:5px;">
       <div id = "BTN" onclick="Signin_btn();">Sign in</div>
     </div>
-
-    <div>
+    <div id = "Pbox">
       <p>Don't have an account yet? <b><a href="http://iwin247.info:3000/reg">Sign up</a></b></p>
     </div>
-
   </body>
 </html>
