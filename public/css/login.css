@@ -13,7 +13,7 @@ body{
   background-repeat: no-repeat;
   background-size : contain;
 }
-@media (max-width : 481px) {
+@media (max-width : 750px) {
   #Box1{
     border-radius: 2em 0 0 2em;
     margin-top: 10%;
