@@ -3,15 +3,88 @@ body{
   height: 100%;
   margin: 0;
   padding:0;
+  background: gray;
 }
-
-
 #Wel{
-  margin-left:17.7%;
-  margin-top:20.9%;
-  width:62.8%;
-  height: 8.9%;
-  background: red;
+  <-margin-left:17.7%;
+  width: 1000px;
+  height: 1000px;
+  background-image : url("../img/welcome.png");
+  background-repeat: no-repeat;
+  background-size : contain;
 }
-#Welcome{
+@media (max-width : 481px) {
+  #Box1{
+    border-radius: 2em 0 0 2em;
+    margin-top: 10%;
+    margin-left : auto;
+    background: #8f91ec;
+    width: 55px;
+    height: 40px;
+  }
+  #Box2{
+    border-radius: 0 2em 2em 0;
+    background: #f1f4fd;
+    width: 165px;
+    height:40px;
+  }
+  p{
+    font-size:14px;
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom:0;
+  }
+  body{
+    background:#ffffff;
+  }
+  #Wel{
+    margin: auto;
+    width: 200px;
+    height: 70px;
+    background-image : url("../img/welcome.png");
+    background-repeat: no-repeat;
+    background-size : contain;
+  }
+  .sub{
+    margin : auto;
+    width:180px;
+    height:30px;
+    padding:0;
+  }
+  .loginName{
+    text-align: center;
+    width:180px;
+    height: 30PX;
+    border-left: 0;
+    border-right: 0;
+    border-top:0;
+    border-width: 0.6px;
+    border-bottom-color: #8f91ec
+  }
+  .loginPasswd{
+    margin-top:5px;
+    text-align: center;
+    width:180px;
+    height: 30PX;
+    border-left: 0;
+    border-right: 0;
+    border-top:0;
+    border-width: 0.6px;
+    border-color: #8f91ec;
+  }
+  #BTN{
+    width: 200px;
+    color: white;
+    height: 30px;
+    border-radius: 2em;
+    margin:auto;
+    text-align: center;
+    background: #8f91ec;
+  }
+
+
+
+
+
+
 }
