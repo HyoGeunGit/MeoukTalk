@@ -38,7 +38,7 @@ body{
   background-size : cover;
 }
 #Pbox{
-  margin-top:15.5vh;
+  margin-top:10.5vh;
 }
 b{
   font-family: 'Helvetica-Light';
@@ -61,9 +61,9 @@ p{
 
 .sub{
   margin-left: 19.6vw;
-  padding: 0;
 }
 .loginName{
+  margin-bottom: 1vh;
   font-size: 2.5vh;
   font-family: 'Helvetica-Light';
   text-align: center;

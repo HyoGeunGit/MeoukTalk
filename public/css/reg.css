@@ -1,0 +1,35 @@
+body{
+  width: 100%;
+  height: 100%;
+  margin:0;
+  padding:0;
+}
+#signBox{
+  margin-top:8.5vh;
+  margin-left:8.3vw;
+  margin-bottom: 11.4vh;
+  width : 51.5vw;
+  height: 8.9vh;
+  background-image : url("../img/group7.png");
+  background-repeat: no-repeat;
+  background-size : cover;
+}
+.IBox{
+  margin-left: 6.1vw;
+  width:87.8vw;
+  height: 6.9vh;
+  border-radius: 3em;
+  background: #f1f4fd;
+  margin-bottom: 3.6vh;
+}
+#IBoxx  {
+  margin-top : 4.7vh;
+}
+#BTN{
+  width: 87.8vw;
+  margin-left:6.1vw;
+  border-radius: 2em;
+  background: #8f91ec;
+  height: 6.9vh;
+
+}
