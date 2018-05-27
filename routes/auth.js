@@ -15,6 +15,12 @@ function auth(app, Users, passport, rndstring){
   //     return res.status(200).json({message:"Signin Success!"});
   //   })(req, res, next)
   // })
+  .get('/auto/:token', async(req,res)=>{
+    var token = req.params.token;
+    var result = await Users.findOne({"token":token});
+    if(!result) return res.status(404).json({message : "Not found user"})
+    else return res.status(200).json({message : "Signin Success!"})
+  })
   .post('/signin', async(req,res)=>{
     var result = await Users.findOne({"id":req.body.id,"passwd":req.body.passwd});
     if(!result)return res.status(404).json({message : "User Not Found!"})

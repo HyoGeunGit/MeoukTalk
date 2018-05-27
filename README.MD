@@ -38,3 +38,16 @@
     HTTP 200 : {message : "Signin Success!"}
 
     HTTP 404 : {message : "User Not Found!"}
+
+* GET /auto/:token : User auto Signin (자동 로그인)
+
+> params
+
+    ex)
+      localhost:3000/auto/A78v8rnXyIySK9a
+
+> Response
+
+    HTTP 200 : {message : "Signin Success!"}
+
+    HTTP 404 : {message : "User Not Found!"}
