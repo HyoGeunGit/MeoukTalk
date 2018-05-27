@@ -9,10 +9,9 @@
 
     ex)
     {
-      id : "akat32",
+      email : "akat32@naver.com",
       passwd : "passwd",
       name : "NaJaeM",
-      email : "email@akat32.com",
       phone : "01012312300"
     }
 
@@ -30,7 +29,7 @@
 
     ex)
     {
-      id : "akat32",
+      email : "akat32@naver.com",
       passwd : "passwd"
     }
 > Response

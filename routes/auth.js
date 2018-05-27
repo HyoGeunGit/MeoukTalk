@@ -22,7 +22,7 @@ function auth(app, Users, passport, rndstring){
     else return res.status(200).json({message : "Signin Success!"})
   })
   .post('/signin', async(req,res)=>{
-    var result = await Users.findOne({"id":req.body.id,"passwd":req.body.passwd});
+    var result = await Users.findOne({"email":req.body.email,"passwd":req.body.passwd});
     if(!result)return res.status(404).json({message : "User Not Found!"})
     return res.status(200).json({message : "Signin Success!"})
   })
