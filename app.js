@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express()
+var http = require('http').Server(app);
+var io = require('socket.io')(http)
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
@@ -28,10 +30,6 @@ app.get('/',(req,res)=>{ res.render('main.html') })
 require('./routes/auth')(app, Users, passport, rndstring);
 require('./routes/loginGet')(app);
 
-
-
-
-
-
+http.listen(3000);
 
 module.exports = app;
