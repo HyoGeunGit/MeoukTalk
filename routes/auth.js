@@ -5,9 +5,6 @@ function auth(app, Users, passport, rndstring){
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.get('/auth',(req,res)=>{
-    res.send('auth test');
-  })
   // .post('/signin',(req,res,next)=>{
   //   passport.authenticate('local', (err,user,info)=>{
   //     if(err) { return res.status(401).json({message : err.message})}
@@ -15,7 +12,7 @@ function auth(app, Users, passport, rndstring){
   //     return res.status(200).json({message:"Signin Success!"});
   //   })(req, res, next)
   // })
-  .get('/auto/:token', async(req,res)=>{
+  app.get('/auto/:token', async(req,res)=>{
     var token = req.params.token;
     var result = await Users.findOne({"token":token});
     if(!result) return res.status(404).json({message : "Not found user"})
@@ -24,14 +21,13 @@ function auth(app, Users, passport, rndstring){
   .post('/signin', async(req,res)=>{
     var result = await Users.findOne({"email":req.body.email,"passwd":req.body.passwd});
     if(!result)return res.status(404).json({message : "User Not Found!"})
-    return res.status(200).json({message : "Signin Success!"})
+    return res.status(200).json({token : result.token})
   })
   .post('/signinWeb',passport.authenticate('local', {failureRedirect: '/login'} ), (req,res)=>{
     res.redirect('/');
   })
   .post('/signup', async (req,res)=>{
     var user = new Users(req.body);
-
     user.token = rndstring.generate(15);
     try {
       var result = await user.save();

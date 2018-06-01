@@ -15,7 +15,13 @@ var UsersSchema = mongoose.Schema({
   name : {type : String, required : true},
   email : {type : String, unique : true, required : true},
   phone : {type : String},
-  token : {type : String}
+  token : {type : String},
+  profileImg : {type : String},
+  friendList : [{
+    name : {type : String},
+    email : {type : String},
+    profileImg : {type : String}
+  }]
 });
 Users = mongoose.model('users', UsersSchema);
 

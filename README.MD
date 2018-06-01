@@ -34,7 +34,7 @@
     }
 > Response
 
-    HTTP 200 : {message : "Signin Success!"}
+    HTTP 200 : {token : User token} (유저 토큰)
 
     HTTP 404 : {message : "User Not Found!"}
 
@@ -42,8 +42,7 @@
 
 > params
 
-    ex)
-      localhost:3000/auto/A78v8rnXyIySK9a
+    ex) localhost:3000/auto/A78v8rnXyIySK9a
 
 > Response
 
