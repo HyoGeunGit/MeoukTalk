@@ -27,7 +27,9 @@ require('./mongo');
 let passport = require('./passport')(Users);
 
 app.get('/',(req,res)=>{ res.render('main.html') })
-require('./routes/auth')(app, Users, passport, rndstring);
+require('./routes/auth')(app, Users, rndstring);
+require('./routes/authWeb')(app, Users, passport, rndstring);
+
 require('./routes/loginGet')(app);
 
 http.listen(3000);
