@@ -7,7 +7,7 @@ function img(app, Users){
   const upload = multer({
     storage: multer.diskStorage({
       destination: (req,file,cb)=>{
-        cb(null, 'profile');
+        cb(null, '/root/meouk/MeoukTalk/public/profile');
       },
       filename: (req,file,cb)=>{
         var newStr = rndstring.generate(33);
@@ -23,7 +23,7 @@ function img(app, Users){
 
   app.post('/img', upload.single('img'), async (req,res)=>{
     var name = req.file.filename;
-    name = "http://iwin247.info:3000/profile" + name;
+    name = "http://iwin247.info:3000/profile/" + name;
     console.log(name)
     var result = await Users.update({email : req.body.email},{$set : {profileImg : name}})
     res.send(result)
