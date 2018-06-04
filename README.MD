@@ -50,3 +50,19 @@
     HTTP 200 : {message : "Signin Success!"}
 
     HTTP 404 : {message : "User Not Found!"}
+
+* POST /add : User add friend (친구 추가)
+
+> params
+
+    token : User token (유저 토큰)
+
+    email : Friend email (친구 이메일)
+
+> Response
+
+    HTTP 200 : {message : "add success!"}
+
+    HTTP 404 : {message : "User Not Found!"}
+
+    HTTP 401 : {message ; "ERR!"}

@@ -27,8 +27,8 @@ require('./func');
 require('./mongo');
 let passport = require('./passport')(Users);
 
-app.get('/',(req,res)=>{ res.render('main.html') })
-require('./routes/img')(app, Users);
+app.get('/',(req,res)=>{ res.render('main.html')})
+require('./routes/friend')(app,Users);
 require('./routes/auth')(app, Users, rndstring,path,multer);
 require('./routes/authWeb')(app, Users, passport, rndstring);
 require('./routes/chat')(app, io);

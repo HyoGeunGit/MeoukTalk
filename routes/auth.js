@@ -4,7 +4,7 @@ function auth(app, Users, rndstring,path,multer){
   const upload = multer({
     storage: multer.diskStorage({
       destination: (req,file,cb)=>{
-        cb(null, '/root/meouk/MeoukTalk/public/profile/');
+        cb(null, '/root/meouk/MeoukTalk/public/profile/'); ///root/meouk/MeoukTalk/public/profile/
       },
       filename: (req,file,cb)=>{
         var newStr = rndstring.generate(33);
