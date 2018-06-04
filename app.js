@@ -29,7 +29,7 @@ let passport = require('./passport')(Users);
 
 app.get('/',(req,res)=>{ res.render('main.html') })
 require('./routes/img')(app, Users);
-require('./routes/auth')(app, Users, rndstring);
+require('./routes/auth')(app, Users, rndstring,path,multer);
 require('./routes/authWeb')(app, Users, passport, rndstring);
 require('./routes/chat')(app, io);
 require('./routes/loginGet')(app);

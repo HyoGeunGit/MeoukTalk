@@ -1,6 +1,21 @@
 module.exports = auth;
 
-function auth(app, Users, rndstring){
+function auth(app, Users, rndstring,path,multer){
+  const upload = multer({
+    storage: multer.diskStorage({
+      destination: (req,file,cb)=>{
+        cb(null, '/root/meouk/MeoukTalk/public/profile/');
+      },
+      filename: (req,file,cb)=>{
+        var newStr = rndstring.generate(33);
+        newStr = newStr + ".BMP"
+        cb(null, newStr);
+      }
+    }),
+    limits: {
+      fileSize: 5 * 1024 * 1024
+    }
+  });
   app.get('/auto/:token', async(req,res)=>{
     var token = req.params.token;
     var result = await Users.findOne({"token":token});
@@ -12,9 +27,17 @@ function auth(app, Users, rndstring){
     if(!result)return res.status(404).json({message : "User Not Found!"})
     return res.status(200).json({token : result.token})
   })
-  .post('/signup', async (req,res)=>{
-    var user = new Users(req.body);
-    user.token = rndstring.generate(15);
+  .post('/signup', upload.single('img'), async (req,res)=>{
+    var fName = req.file.filename;
+    fName = "http://iwin247.info:3000/profile/" + fName;
+    var user = new Users({
+      email : req.body.email,
+      passwd : req.body.passwd,
+      name : req.body.name,
+      phone : req.body.phone,
+      token : rndstring.generate(25),
+      profileImg : fName
+    });
     try {
       var result = await user.save();
     }catch(e){

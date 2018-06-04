@@ -12,7 +12,8 @@
       email : "akat32@naver.com",
       passwd : "passwd",
       name : "NaJaeM",
-      phone : "01012312300"
+      phone : "01012312300",
+      img : "image" // 프로필 이미지
     }
 
 > Response
@@ -49,14 +50,3 @@
     HTTP 200 : {message : "Signin Success!"}
 
     HTTP 404 : {message : "User Not Found!"}
-
-* POST /img : User Profile IMG
-
-> params
-
-    id : userID (유저 아이디)
-    img : Profile_Img (프로필 사진)
-
-> Response
-
-    HTTP 200 : {message : "Success"}
