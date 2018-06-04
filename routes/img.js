@@ -7,7 +7,7 @@ function img(app, Users){
   const upload = multer({
     storage: multer.diskStorage({
       destination: (req,file,cb)=>{
-        cb(null, 'public/profile');
+        cb(null, 'profile');
       },
       filename: (req,file,cb)=>{
         var newStr = rndstring.generate(33);
