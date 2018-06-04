@@ -49,3 +49,14 @@
     HTTP 200 : {message : "Signin Success!"}
 
     HTTP 404 : {message : "User Not Found!"}
+
+* POST /img : User Profile IMG
+
+> params
+
+    id : userID (유저 아이디)
+    img : Profile_Img (프로필 사진)
+
+> Response
+
+    HTTP 200 : {message : "Success"}

@@ -8,6 +8,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const rndstring = require('randomstring');
 const ejs = require('ejs')
+const multer = require('multer');
 var cookieSession = require('cookie-session');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,9 +28,10 @@ require('./mongo');
 let passport = require('./passport')(Users);
 
 app.get('/',(req,res)=>{ res.render('main.html') })
+require('./routes/img')(app, Users);
 require('./routes/auth')(app, Users, rndstring);
 require('./routes/authWeb')(app, Users, passport, rndstring);
-
+require('./routes/chat')(app, io);
 require('./routes/loginGet')(app);
 
 http.listen(3000);
