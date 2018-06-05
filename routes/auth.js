@@ -16,6 +16,10 @@ function auth(app, Users, rndstring,path,multer){
       fileSize: 5 * 1024 * 1024
     }
   });
+  app.post('/img', upload.single('img'), async (req,res)=>{
+    console.log(req.file.filename)
+    res.send(req.file)
+  })
   app.get('/auto/:token', async(req,res)=>{
     var token = req.params.token;
     var result = await Users.findOne({"token":token});
