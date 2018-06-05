@@ -2,11 +2,11 @@ module.exports = chat;
 
 
 function chat(app, io){
-  app.get('/chat', (req,res)=>{
+  app.get('/cht', (req,res)=>{
     res.render('chat.html');
   })
-  var cnt = 1
-  io.on('connection', (socket)=>{
-    
+  const chat = io.of('/chat')
+  chat.on('connection', (socket)=>{
+    console.log(socket.id);
   })
 }

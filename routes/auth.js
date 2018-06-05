@@ -4,7 +4,7 @@ function auth(app, Users, rndstring,path,multer){
   const upload = multer({
     storage: multer.diskStorage({
       destination: (req,file,cb)=>{
-        cb(null, '/root/meouk/MeoukTalk/public/profile/'); ///root/meouk/MeoukTalk/public/profile/
+        cb(null, 'public/profile'); ///root/meouk/MeoukTalk/public/profile/
       },
       filename: (req,file,cb)=>{
         var newStr = rndstring.generate(33);
@@ -33,12 +33,12 @@ function auth(app, Users, rndstring,path,multer){
   })
   .post('/signup', upload.single('img'), async (req,res)=>{
     var fName = req.file.filename;
-    fName = "http://iwin247.info:3000/profile/" + fName;
+    fName = "http://"+"iwin247"+".info:3000/profile/" + fName;
     var user = new Users({
-      email : req.body.email,
-      passwd : req.body.passwd,
-      name : req.body.name,
-      phone : req.body.phone,
+      email : req.body.email.replace(/"/gi,''),
+      passwd : req.body.passwd.replace(/"/gi,''),
+      name : req.body.name.replace(/"/gi,''),
+      phone : req.body.phone.replace(/"/gi,''),
       token : rndstring.generate(25),
       profileImg : fName
     });

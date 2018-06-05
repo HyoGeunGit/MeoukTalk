@@ -31,5 +31,9 @@ body{
   border-radius: 2em;
   background: #8f91ec;
   height: 6.9vh;
-
+}
+#regId{
+  margin : auto;
+  font-size: 100px;
+  border : 0px;
 }
