@@ -65,4 +65,20 @@
 
     HTTP 404 : {message : "User Not Found!"}
 
-    HTTP 401 : {message ; "ERR!"}
+    HTTP 500 : {message ; "ERR!"}
+
+* POST /del : User del friend (친구 삭제)
+
+> params
+
+    token : User token (유저 토큰)
+
+    email : Friend email (친구 이메일)
+
+> Response
+
+    HTTP 200 : {message : "del success!"}
+
+    HTTP 404 : {message : "User Not Found!"}
+
+    HTTP 500 : {message : "ERR!"}
