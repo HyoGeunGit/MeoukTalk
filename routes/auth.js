@@ -4,7 +4,7 @@ function auth(app, Users, rndstring,path,multer){
   const upload = multer({
     storage: multer.diskStorage({
       destination: (req,file,cb)=>{
-        cb(null, 'public/profile'); ///root/meouk/MeoukTalk/public/profile/
+        cb(null, '/root/meouk/MeoukTalk/public/profile/'); ///root/meouk/MeoukTalk/public/profile/
       },
       filename: (req,file,cb)=>{
         var newStr = rndstring.generate(33);
@@ -24,7 +24,7 @@ function auth(app, Users, rndstring,path,multer){
     var token = req.params.token;
     var result = await Users.findOne({"token":token});
     if(!result) return res.status(404).json({message : "Not found user"})
-    else return res.status(200).json({message : "Signin Success!"})
+    else return res.status(200).json({user : result})
   })
   .post('/signin', async(req,res)=>{
     var result = await Users.findOne({"email":req.body.email,"passwd":req.body.passwd});
