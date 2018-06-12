@@ -47,7 +47,7 @@
 
 > Response
 
-    HTTP 200 : {message : "Signin Success!"}
+    HTTP 200 : {user :  User's Json} (유저 정보)
 
     HTTP 404 : {message : "User Not Found!"}
 
