@@ -36,4 +36,9 @@ function friend(app, Users){
     if(!result2.ok) return res.status(500).json({message : "ERR!"})
     res.status(200).json({message : "del success!"})
   })
+  .post('/chk', async(req,res)=>{
+    var result = await Users.findOne({token : req.body.token})
+    if(!result) return res.status(404).json({message : "Users Not Found!"})
+    else return res.status(200).json({list : result.friendList})
+  })
 }

@@ -82,3 +82,29 @@
     HTTP 404 : {message : "User Not Found!"}
 
     HTTP 500 : {message : "ERR!"}
+
+* POST /chk : User friend List (친구 리스트)
+
+> params
+
+    token : User's token (유저 토큰)
+
+> Response
+
+    HTTP 200 : (example)
+    {
+      "list" : [
+        {
+          "name" : "민재나",
+          "email" : asdsad@nabe.cpm",
+          "profileImg" : "http://asdsasadasdsadas.png"
+        },
+        {
+          "name" : "민나재",
+          "email" : qqwwead@nabe.cpm",
+          "profileImg" : "http://ddasdsasadasdsadas.png"
+        }
+      ]
+    }
+
+    HTTP 404 : {message : "Users Not Found!"}
