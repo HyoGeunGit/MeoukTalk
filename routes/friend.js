@@ -10,11 +10,13 @@ function friend(app, Users){
     var friend = {
       name : result1.name,
       email : result1.email,
+      phone : result1.phone,
       profileImg : result1.profileImg
     }
     var me = {
       name : result2.name,
       eamil : result2.email,
+      phone : result2.phone,
       profileImg : result2.profileImg
     }
     var result3 = await Users.update(
@@ -47,6 +49,7 @@ function friend(app, Users){
     var returnUser = {
       name : result.name,
       email : result.email,
+      phone : result.phone,
       profileImg : result.profileImg
     }
     return res.status(200).json(returnUser);

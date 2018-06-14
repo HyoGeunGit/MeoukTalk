@@ -97,11 +97,13 @@
         {
           "name" : "민재나",
           "email" : "asdsad@nabe.cpm",
+          "phone" : "010-2222-3333",
           "profileImg" : "http://asdsasadasdsadas.png"
         },
         {
           "name" : "민나재",
           "email" : "qqwwead@nabe.cpm",
+          "phone" : "010-1111-2222",
           "profileImg" : "http://ddasdsasadasdsadas.png"
         }
       ]
@@ -121,6 +123,7 @@
     {
         "name" : "민재나",
         "email" : "sadsad@navewr.com",
+        "phone" : "010-1234-1234",
         "profileImg" : "http://sadsadaasda.png"
     }
 
