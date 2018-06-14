@@ -96,15 +96,32 @@
       "list" : [
         {
           "name" : "민재나",
-          "email" : asdsad@nabe.cpm",
+          "email" : "asdsad@nabe.cpm",
           "profileImg" : "http://asdsasadasdsadas.png"
         },
         {
           "name" : "민나재",
-          "email" : qqwwead@nabe.cpm",
+          "email" : "qqwwead@nabe.cpm",
           "profileImg" : "http://ddasdsasadasdsadas.png"
         }
       ]
     }
 
     HTTP 404 : {message : "Users Not Found!"}
+
+* POST /search : friend search (친구 찾기)
+
+> params
+
+    email : friend's email
+
+> Response
+
+    HTTP 200 : (example)
+    {
+        "name" : "민재나",
+        "email" : "sadsad@navewr.com",
+        "profileImg" : "http://sadsadaasda.png"
+    }
+
+    HTTP 404 : {message : "User Not Found!"}

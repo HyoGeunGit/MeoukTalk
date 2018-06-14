@@ -38,7 +38,17 @@ function friend(app, Users){
   })
   .post('/chk', async(req,res)=>{
     var result = await Users.findOne({token : req.body.token})
-    if(!result) return res.status(404).json({message : "Users Not Found!"})
+    if(!result) return res.status(404).json({message : "User Not Found!"})
     else return res.status(200).json({list : result.friendList})
+  })
+  .post('/search', async(req,res)=>{
+    var result = await Users.findOne({email : req.body.email})
+    if(!result) return res.status(404).json({message : "User Not Found!"})
+    var returnUser = {
+      name : result.name,
+      email : result.email,
+      profileImg : result.profileImg
+    }
+    return res.status(200).json(returnUser);
   })
 }
