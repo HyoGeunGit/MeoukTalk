@@ -5,27 +5,35 @@ function chat(app, io, Users){
   app.get('/cht', (req,res)=>{
     res.render('chat.html');
   })
-  // const chat = io.of('/chat')
-  // chat.on('connection', (socket)=>{
-  //   console.log('new User! : ', socket);
-  //   socket.on('disconnect', ()=>{
-  //     console.log('User Disconnect : ', socket.id);
-  //   })
-  // })
   var count = 0;
-  io.on('connection', function(socket){ //3
-    console.log('user connected: ', socket.id);  //3-1
-    var name = "user" + count++;                 //3-1
-    io.to(socket.id).emit('change name',name);   //3-1
-    socket.on('disconnect', function(){ //3-2
+  io.on('connection', function(socket){
+    console.log('user connected: ', socket.id);
+    var name = "user" + count++;
+    io.to(socket.id).emit('change name',name);
+    socket.on('disconnect', function(){
       console.log('user disconnected: ', socket.id);
     });
-
-    socket.on('send message', function(name,text){ //3-3
+    socket.on('send message', function(name,text){
       var msg = name + ' : ' + text;
       console.log(msg);
       io.emit('receive message', msg);
     });
   });
 
+  // io.on('connection', (socket)=>{
+  //   socket.on('disconnect', ()=>{ console.log('user disconnect')})
+  //   socket.on('join room', (name, room)=>{
+  //     var text = name + "님이 방에 들어왔습니다.";
+  //     io.to(room).emit('welcome room', name, text);
+  //     socket.join(room);
+  //   })
+  //   socket.on('leave room', (name, room)=>{
+  //     var text = name + "님이 방에서 나갔습니다.";
+  //     io.to(room).emit('goodbye room', name, text);
+  //     socket.leave(room);
+  //   })
+  //   socket.on('send message', (name, index, room)=>{
+  //     io.to(room).emit('receive message', name, index, room);
+  //   })
+  // })
 }
