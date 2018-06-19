@@ -19,6 +19,9 @@ function friend(app, Users){
       phone : result2.phone,
       profileImg : result2.profileImg
     }
+    for (i = 0; result2.friendList[i] != null; i++)
+      if(result2.friendList[i].email === friend.email)
+        return res.status(409).json({message : "already exist"});
     var result3 = await Users.update(
       {"token" : req.body.token},
       {$push : {friendList : friend}}

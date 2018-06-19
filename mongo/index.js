@@ -20,6 +20,7 @@ var UsersSchema = mongoose.Schema({
   friendList : [{
     name : {type : String},
     email : {type : String},
+    phone : {type : String},
     profileImg : {type : String}
   }]
 });

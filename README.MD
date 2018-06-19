@@ -65,6 +65,8 @@
 
     HTTP 404 : {message : "User Not Found!"}
 
+    HTTP 409 : {message : "already exist"}
+
     HTTP 500 : {message ; "ERR!"}
 
 * POST /del : User del friend (친구 삭제)
