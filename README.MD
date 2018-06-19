@@ -130,3 +130,65 @@
     }
 
     HTTP 404 : {message : "User Not Found!"}
+
+* POST /room : chat with friend (친구와 1대1 채팅 시작)
+
+> params
+
+    email : friend's email
+
+> Response
+
+    HTTP 200 : {roomID : roodID} //room의 ID 값을 반환 (String)
+
+    HTTP 404 : {message : "User Not Found!"}
+
+* POST /invite : friend invite (채팅방에 친구 초대)
+
+> params
+
+    email : friend's email
+
+    roomID : room's ID
+
+> Response
+
+    HTTP 200 : {message : "success!"}
+
+    HTTP 500 : {message : "ERR!"}
+
+* POST /accept : invite accept (초대 수락)
+
+> params
+
+    token : User's token
+
+    roomID : room's ID
+
+> Response
+
+    HTTP 200 : {message : "success!"}
+
+    HTTP 500 : {message : "ERR!"}
+
+* POST /roomchk : check room invite (초대 확인)
+
+> params
+
+    token : User's token
+
+> Response
+
+    HTTP 200 : (example)
+    {
+      "list" : [
+        {
+          roomID : "asdasdasdasdasdasd"
+        },
+        {
+          roomID : "asd121123aasdasdas"
+        }
+      ]
+    }
+
+    HTTP 404 : {message : "User Not Found!"}

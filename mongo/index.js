@@ -8,7 +8,9 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () { console.log("Mongo On"); });
 
-
+var RoomSchema = mongoose.Schema({
+  roomID : {type : String}
+})
 
 var UsersSchema = mongoose.Schema({
   passwd : {type : String , required : true},
@@ -22,13 +24,16 @@ var UsersSchema = mongoose.Schema({
     email : {type : String},
     phone : {type : String},
     profileImg : {type : String}
+  }],
+  roomInvite : [{
+    roomID : {type : String}
   }]
 });
 Users = mongoose.model('users', UsersSchema);
-
+Rooms = mongoose.model('rooms', RoomSchema);
 
 require('./err')(UsersSchema);
 
-
+exports.Rooms = Rooms;
 exports.Users = Users;
 exports.db = db;
