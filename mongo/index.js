@@ -10,7 +10,7 @@ db.once('open', function callback () { console.log("Mongo On"); });
 
 var RoomSchema = mongoose.Schema({
   roomID : {type : String}
-})
+});
 
 var UsersSchema = mongoose.Schema({
   passwd : {type : String , required : true},

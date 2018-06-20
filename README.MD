@@ -13,7 +13,7 @@
       passwd : "passwd",
       name : "NaJaeM",
       phone : "01012312300",
-      img : "image" // 프로필 이미지
+      profileImg : "image" // 프로필 이미지
     }
 
 > Response
