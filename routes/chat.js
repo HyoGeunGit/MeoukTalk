@@ -15,7 +15,7 @@ function chat(app, io, Users, Rooms, rndstring){
       {$push : {roomInvite : roomID}}
     )
     if(!result.ok) return res.status(500).json({message : "ERR!"});
-    else return res.status(200).json({roomID : roomID});
+    else return res.status(200).send(roomID);
   })
   .post('/invite', async (req,res)=>{
     var room = {
