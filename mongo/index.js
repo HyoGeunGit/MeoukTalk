@@ -26,7 +26,7 @@ var UsersSchema = mongoose.Schema({
     profileImg : {type : String}
   }],
   roomInvite : [{
-    roomID : {type : String}
+    roomID : {type : String},
   }]
 });
 Users = mongoose.model('users', UsersSchema);

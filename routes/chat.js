@@ -26,6 +26,7 @@ function chat(app, io, Users, Rooms, rndstring){
     let result = await Users.update({"token" : req.body.token},
       {$pop : {roomInvite : req.body.roomID}}
     )
+
     if(!result.ok) return res.status(500).json({message : "ERR!"});
     else return res.status(200).json({message : "success!"});
   })
@@ -53,8 +54,8 @@ function chat(app, io, Users, Rooms, rndstring){
     socket.on('send message', (name, index, room)=>{
       console.log(room + '. ' + name + ' : ' + index)
       var msg = name + ' : ' + index;
-      io.emit('receive message', msg);
-      //io.to(room).emit('receive message', name, index, room);
+      //io.emit('receive message', msg);
+      io.to(room).emit('receive message', name, index, room);
     })
     socket.on('disconnect', ()=>{ console.log('user disconnect')})
   })
