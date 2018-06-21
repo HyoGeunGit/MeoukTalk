@@ -6,18 +6,23 @@ function chat(app, io, Users, Rooms, rndstring){
     res.render('chat.html');
   })
   .post('/room', async (req,res)=>{
-    var roomID = rndstring.generate(50);
+    var roomID = {
+      "roomID" : rndstring.generate(50)
+    }
     var room = new Rooms(roomID);
     var Rresult = await room.save();
     let result = await Users.update({"email" : req.body.email},
       {$push : {roomInvite : roomID}}
     )
     if(!result.ok) return res.status(500).json({message : "ERR!"});
-    else return res.status(200).json({roomID : roomID});
+    else return res.status(200).send(roomID);
   })
   .post('/invite', async (req,res)=>{
+    var room = {
+      "roomID" : req.body.roomID
+    }
     let result = await Users.update({"email" : req.body.email},
-      {$push : {roomInvite : req.body.roomID}}
+      {$push : {roomInvite : room}}
     )
     if(!result.ok) return res.status(500).json({message : "ERR!"});
     else return res.status(200).json({message : "success!"});
@@ -31,7 +36,7 @@ function chat(app, io, Users, Rooms, rndstring){
     else return res.status(200).json({message : "success!"});
   })
   .post('/roomchk', async(req,res)=>{
-    let result = await Users.findOne({token : token})
+    let result = await Users.findOne({token : req.body.token})
     if(!result) return res.status(404).json({message : "User Not Found!"})
     else return res.status(200).json({list : result.roomInvite})
   })
