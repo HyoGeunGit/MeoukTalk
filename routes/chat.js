@@ -12,9 +12,13 @@ function chat(app, io, Users, Rooms, rndstring){
     var room = new Rooms(roomID);
     var Rresult = await room.save();
     let result = await Users.update({"email" : req.body.email},
-      {$push : {roomInvite : roomID}}
+      {$push : {roomInvite : roomID}},
     )
     if(!result.ok) return res.status(500).json({message : "ERR!"});
+    let result1 = await Users.update({"token" : req.body.token},
+      {$push : {roomList : roomID}}
+    )
+    if(!result1.ok) return res.status(500).json({message : "ERR!"});
     else return res.status(200).send(roomID);
   })
   .post('/invite', async (req,res)=>{
@@ -28,19 +32,23 @@ function chat(app, io, Users, Rooms, rndstring){
     else return res.status(200).json({message : "success!"});
   })
   .post('/accept', async (req,res)=>{
+    var roomID = {"roomID" : req.body.roomID}
     let result = await Users.update({"token" : req.body.token},
-      {$pop : {roomInvite : req.body.roomID}}
+      {$pop : {roomInvite : req.body.roomID}, $push : {roomList : roomID}}
     )
-
     if(!result.ok) return res.status(500).json({message : "ERR!"});
-    else return res.status(200).json({message : "success!"});
+    else return res.status(200).send(roomID);
   })
   .post('/roomchk', async(req,res)=>{
     let result = await Users.findOne({token : req.body.token})
     if(!result) return res.status(404).json({message : "User Not Found!"})
     else return res.status(200).json({list : result.roomInvite})
   })
-
+  .post('/roomList', async (req,res)=>{
+    let result = await Users.findOne({token : req.body.token})
+    if(!result) return res.status(404).json({message : "User Not Found!"})
+    else return res.status(200).send(result.roomList);
+  })
 
   io.on('connection', (socket)=>{
     console.log('new user! : ', socket.id)
@@ -67,6 +75,8 @@ function chat(app, io, Users, Rooms, rndstring){
       socket.broadcast.to(room).emit('receive message', returnMsg);
       io.emit('receive message web', msg);
     })
-    socket.on('disconnect', ()=>{ console.log('user disconnect')})
+    socket.on('disconnect', ()=>{
+      console.log('user disconnect')
+    })
   })
 }

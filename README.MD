@@ -137,9 +137,11 @@
 
     email : friend's email
 
+    token : User's token
+
 > Response
 
-    HTTP 200 : {roomID : roodID} //room의 ID 값을 반환 (String)
+    HTTP 200 : {"roomID" : roodID} //room의 ID 값을 반환 (String)
 
     HTTP 404 : {message : "User Not Found!"}
 
@@ -167,7 +169,7 @@
 
 > Response
 
-    HTTP 200 : {message : "success!"}
+    HTTP 200 : {"roomID" : room's ID}
 
     HTTP 500 : {message : "ERR!"}
 
@@ -186,9 +188,30 @@
           roomID : "asdasdasdasdasdasd"
         },
         {
-          roomID : "asd121123aasdasdas"
+          roomID  : "asd121123aasdasdas"
         }
       ]
     }
+
+    HTTP 404 : {message : "User Not Found!"}
+
+* POST /roomList : User's room list (유저 채팅방 목록)
+
+> params
+
+    token : User's
+
+> Response
+
+    HTTP 200 : (example)
+    [
+      {
+        "roomID": "hzmE66OHYF7Uapk3BCrxdGUM4tnpgaFJOFjbAcQkx5mf3k2cca"
+      },
+      {
+        "roomID": "slkdjlk2jlkdjwlkdj1209dj09wdj0921rf39ewfhf98sadhsd"
+      }
+    ]
+
 
     HTTP 404 : {message : "User Not Found!"}
