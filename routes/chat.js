@@ -59,7 +59,12 @@ function chat(app, io, Users, Rooms, rndstring){
     socket.on('send message', (name, index, room)=>{
       console.log(room + '. ' + name + ' : ' + index)
       var msg = name + ' : ' + index;
-      io.to(room).emit('receive message', name, index, room);
+      var returnMsg = {
+        "name" : name,
+        "index" : index,
+        "room" : room
+      }
+      socket.broadcast.to(room).emit('receive message', returnMsg);
       io.emit('receive message web', msg);
     })
     socket.on('disconnect', ()=>{ console.log('user disconnect')})
