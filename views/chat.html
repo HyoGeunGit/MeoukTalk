@@ -34,7 +34,7 @@
         $('#message').focus();
         e.preventDefault();
       });
-      socket.on('receive message', function(msg){ //3
+      socket.on('receive message web', function(msg){ //3
         $('#chatLog').append(msg+'\n');
         $('#chatLog').scrollTop($('#chatLog')[0].scrollHeight);
       });
