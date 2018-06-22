@@ -62,5 +62,6 @@ function friend(app, Users){
     for (i = 0; result.friendList[i] != null; i++)
       if(result.friendList[i].email === req.body.email)
         return res.status(200).send(result.friendList[i].isChat);
+    return res.status(404).json({message : "User Not Found!"})
   })
 }

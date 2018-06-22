@@ -200,7 +200,7 @@
 
 > params
 
-    token : User's
+    token : User's token
 
 > Response
 
@@ -214,5 +214,19 @@
       }
     ]
 
+
+    HTTP 404 : {message : "User Not Found!"}
+
+* POST /ischat : Chat Check (그 친구와 채팅한 경험이 있는가?)
+
+> params
+
+    token : User's token
+
+    email : friend's email
+
+> Response
+
+    HTTP 200 : true 또는 false
 
     HTTP 404 : {message : "User Not Found!"}
