@@ -11,13 +11,29 @@ function chat(app, io, Users, Rooms, rndstring){
     }
     var room = new Rooms(roomID);
     var Rresult = await room.save();
-    let result = await Users.update({"email" : req.body.email},
-      {$push : {roomInvite : roomID}},
-    )
+    var resultA = await Users.findOne({"token" : req.body.token}) // 유저
+    var resultB = await Users.findOne({"email" : req.body.email}) // 친구
+    var updateA = {
+      "name" : resultA.name,
+      "email" : resultA.email,
+      "phone" : resultA.phone,
+      "profileImg" : resultA.profileImg,
+      "isChat" : true
+    }
+    var updateB = {
+      "name" : resultB.name,
+      "email" : resultB.email,
+      "phone" : resultB.phone,
+      "profileImg" : resultB.profileImg,
+      "isChat" : true
+    }
+    var result = await Users.update({"token" : req.body.token},{$push : {roomList : roomID}})
+    result = await Users.update({"token" : req.body.token},{$pop : {friendList : req.body.email}})
+    result = await Users.update({"token" : req.body.token},{$push : {friendList : updateB}})
     if(!result.ok) return res.status(500).json({message : "ERR!"});
-    let result1 = await Users.update({"token" : req.body.token},
-      {$push : {roomList : roomID}}
-    )
+    var result1 = await Users.update({"email" : req.body.email},{$push : {roomList : roomID}})
+    result1 = await Users.update({"email" : req.body.email},{$pop : {friendList : req.body.myemail}})
+    result1 = await Users.update({"email" : req.body.email},  {$push : {friendList : updateA}})
     if(!result1.ok) return res.status(500).json({message : "ERR!"});
     else return res.status(200).send(roomID);
   })
@@ -49,7 +65,13 @@ function chat(app, io, Users, Rooms, rndstring){
     if(!result) return res.status(404).json({message : "User Not Found!"})
     else return res.status(200).send(result.roomList);
   })
-
+  .post('/leave', async (req,res)=>{
+    let result = await Users.update({token : req.body.token},
+      {$pop : {roomList : req.body.roomID}}
+    )
+    if(!result.ok) return res.status(500).json({message : "ERR!"})
+    else return res.status(200).json({message : "success!"})
+  })
   io.on('connection', (socket)=>{
     console.log('new user! : ', socket.id)
     socket.on('join room', (name, room)=>{

@@ -23,7 +23,8 @@ var UsersSchema = mongoose.Schema({
     name : {type : String},
     email : {type : String},
     phone : {type : String},
-    profileImg : {type : String}
+    profileImg : {type : String},
+    isChat : {type : Boolean, default : false}
   }],
   roomInvite : [{
     roomID : {type : String}

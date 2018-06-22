@@ -15,7 +15,7 @@ function friend(app, Users){
     }
     var me = {
       name : result2.name,
-      eamil : result2.email,
+      email : result2.email,
       phone : result2.phone,
       profileImg : result2.profileImg
     }
@@ -53,7 +53,8 @@ function friend(app, Users){
       name : result.name,
       email : result.email,
       phone : result.phone,
-      profileImg : result.profileImg
+      profileImg : result.profileImg,
+      isChat : result.isChat
     }
     return res.status(200).json(returnUser);
   })

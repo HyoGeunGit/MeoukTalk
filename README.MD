@@ -139,6 +139,7 @@
 
     token : User's token
 
+    myemail : User's email
 > Response
 
     HTTP 200 : {"roomID" : roodID} //room의 ID 값을 반환 (String)
