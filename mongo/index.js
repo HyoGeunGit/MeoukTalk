@@ -30,6 +30,7 @@ var UsersSchema = mongoose.Schema({
     roomID : {type : String}
   }],
   roomList : [{
+    email : {type : String},
     roomID : {type : String}
   }]
 });

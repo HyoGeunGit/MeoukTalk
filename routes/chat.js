@@ -27,12 +27,20 @@ function chat(app, io, Users, Rooms, rndstring){
       "profileImg" : resultB.profileImg,
       "isChat" : true
     }
-    var result = await Users.update({"token" : req.body.token},{$push : {roomList : roomID}})
+    var roomA = {
+      "email" : req.body.email,
+      "roomID" : roomID.roomID
+    }
+    var roomB = {
+      "email" : resultA.email,
+      "roomID" : roomID.roomID
+    }
+    var result = await Users.update({"token" : req.body.token},{$push : {roomList : roomA}})
     result = await Users.update({"token" : req.body.token},{$pop : {friendList : req.body.email}})
     result = await Users.update({"token" : req.body.token},{$push : {friendList : updateB}})
     if(!result.ok) return res.status(500).json({message : "ERR!"});
-    var result1 = await Users.update({"email" : req.body.email},{$push : {roomList : roomID}})
-    result1 = await Users.update({"email" : req.body.email},{$pop : {friendList : req.body.myemail}})
+    var result1 = await Users.update({"email" : req.body.email},{$push : {roomList : roomB}})
+    result1 = await Users.update({"email" : req.body.email},{$pop : {friendList : resultA.email}})
     result1 = await Users.update({"email" : req.body.email},  {$push : {friendList : updateA}})
     if(!result1.ok) return res.status(500).json({message : "ERR!"});
     else return res.status(200).send(roomID);
