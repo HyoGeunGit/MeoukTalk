@@ -67,7 +67,7 @@ function chat(app, io, Users, Rooms, rndstring){
     let result = await Users.findOne({token : req.body.token})
     for (i = 0; result.roomList[i] != null; i++)
       if(result.roomList[i].email === req.body.email)
-        return res.status(200).send(result.roomList[i].roomID);
+        return res.status(200).send({"roomID" : result.roomList[i].roomID});
     return res.status(404).json({message : "User Not Found!"})
   })
   .post('/roomList', async (req,res)=>{
