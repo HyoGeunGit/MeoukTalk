@@ -146,6 +146,8 @@
 
     HTTP 404 : {message : "User Not Found!"}
 
+    HTTP 409 : {message : "already exist"}
+
 * POST /invite : friend invite (채팅방에 친구 초대)
 
 > params
