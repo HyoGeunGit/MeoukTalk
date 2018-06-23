@@ -13,6 +13,9 @@ function chat(app, io, Users, Rooms, rndstring){
     var Rresult = await room.save();
     var resultA = await Users.findOne({"token" : req.body.token}) // 유저
     var resultB = await Users.findOne({"email" : req.body.email}) // 친구
+    for (i = 0; resultA.roomList[i] != null; i++)
+      if(resultA.roomList[i].email === req.body.email)
+        return res.status(409).json({message : "already exist"});
     var updateA = {
       "name" : resultA.name,
       "email" : resultA.email,
