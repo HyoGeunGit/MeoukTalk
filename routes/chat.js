@@ -86,6 +86,32 @@ function chat(app, io, Users, Rooms, rndstring){
     if(!result.ok) return res.status(500).json({message : "ERR!"})
     else return res.status(200).json({message : "success!"})
   })
+  function leadingZeros(n, digits) {
+    var zero = '';
+    n = n.toString();
+    if (n.length < digits) {
+      for (i = 0; i < digits - n.length; i++)
+        zero += '0';
+      }
+      return zero + n;
+  }
+  function getWorldTime(tzOffset) { // 24시간제
+    var now = new Date();
+    var tz = now.getTime() + (now.getTimezoneOffset() * 60000) + (tzOffset * 3600000);
+    now.setTime(tz);
+    var aft;
+    if(leadingZeros(now.getHours(), 2) >= 12)
+      aft =  "오후 " + (leadingZeros(now.getHours(), 2)-12);
+    else aft = "오전 " + leadingZeros(now.getHours(), 2)
+    var s =
+    //leadingZeros(now.getFullYear(), 4) + '-' +
+    //leadingZeros(now.getMonth() + 1, 2) + '-' +
+    //leadingZeros(now.getDate(), 2) + ' ' +
+    aft + ':' +
+    leadingZeros(now.getMinutes(), 2)
+    //leadingZeros(now.getSeconds(), 2);
+    return s;
+  }
   io.on('connection', (socket)=>{
     console.log('new user! : ', socket.id)
     socket.on('join room', (name, room)=>{
@@ -102,14 +128,17 @@ function chat(app, io, Users, Rooms, rndstring){
     })
     socket.on('send message', (name, index, room)=>{
       console.log(room + '. ' + name + ' : ' + index)
+      var time = getWorldTime(+9);
       var msg = name + ' : ' + index;
       var returnMsg = {
         "name" : name,
         "index" : index,
-        "room" : room
+        "room" : room,
+        "time" : time
       }
+      console.log(returnMsg.time)
       socket.broadcast.to(room).emit('receive message', returnMsg);
-      io.emit('receive message web', msg);
+      //io.emit('receive message web', msg);
     })
     socket.on('disconnect', ()=>{
       console.log('user disconnect')
